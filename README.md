@@ -14,6 +14,12 @@ Synthetic events → replay → match metrics → shift detector → immutable E
 
 The event stream is authoritative. The backend computes all metrics and creates observed evidence; the browser renders SSE values without recalculating them. What-If results are separately materialized and include their own observed t0 anchor, assumptions, and limitations. No goals or scores are projected.
 
+## Hackathon context
+
+The demo turns synthetic football events into real-time match-state changes, traceable evidence, and a bounded explanation suited to broadcast/studio discussion or a streaming second-screen experience. The narrative in this MVP is a deterministic local fallback; an external generative AI provider and official live match feeds are not implemented.
+
+The technical flow is `Synthetic Events → Replay Engine → Match State Engine → Detector → EvidenceObject → Narrative → WhatIfEngine → React UI`.
+
 ## Run locally
 
 Requirements: Python 3.11+, Node.js 20+.
