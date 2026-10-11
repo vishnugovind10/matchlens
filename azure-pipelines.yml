@@ -1,0 +1,17 @@
+trigger:
+  - main
+pool:
+  vmImage: ubuntu-latest
+steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.11'
+  - script: python -m pip install -e '.[test]' && python -m pytest
+    workingDirectory: backend
+    displayName: Backend tests
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '22.x'
+  - script: npm ci && npm run typecheck && npm run build
+    workingDirectory: frontend
+    displayName: Frontend checks

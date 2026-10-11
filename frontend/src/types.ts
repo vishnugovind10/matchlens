@@ -1,0 +1,3 @@
+export type MetricSet = Record<string, number>;
+export interface EvidenceObject { id:string; kind:'observed'; team:string; opponent:string; match_context:{trigger_timestamp:string}; detection:{qualified:boolean}; evidence:{baseline:MetricSet; detection:MetricSet; deltas:MetricSet; supporting_events:Array<{event_id:string;timestamp:string;event_type:string;team:string;zone:string|null}>}; explanation_contract:{what_changed:string;why_it_matters:string}; }
+export interface WhatIfResult { id:string; evidence_id:string; scenario:{mode:string;horizon_sec:number}; observed_at_t0:{t0_timestamp:string;metrics:MetricSet}; assumptions:string[]; limitations:string[]; outputs:MetricSet; }
